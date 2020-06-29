@@ -6,12 +6,14 @@ dependencies {
     compile gradleApi()
     //groovy sdk
     compile localGroovy()
-    compile 'com.android.tools.build:gradle:3.2.1'
+    compile 'com.android.tools.build:gradle:3.5.0'
     compile 'org.javassist:javassist:+'
 }
 
 repositories {
     mavenCentral()
+     google()
+        jcenter()
 }
 //
 //uploadArchives {
