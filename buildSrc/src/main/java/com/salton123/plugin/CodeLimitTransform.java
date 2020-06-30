@@ -1,6 +1,5 @@
 package com.salton123.plugin;
 
-
 import com.android.build.api.transform.Context;
 import com.android.build.api.transform.QualifiedContent;
 import com.android.build.api.transform.Transform;
@@ -17,13 +16,6 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.Set;
 
-import javassist.ClassPool;
-import javassist.CtClass;
-import javassist.CtMethod;
-import javassist.Modifier;
-import javassist.NotFoundException;
-
-
 /**
  * User: newSalton@outlook.com
  * Date: 2019/6/19 15:49
@@ -34,8 +26,6 @@ public class CodeLimitTransform extends Transform {
 
     private static final String TAG = "CodeLimitTransform";
     private Project mProject;
-
-    private static ClassPool pool = ClassPool.getDefault();
 
     public CodeLimitTransform(Project project) {
         this.mProject = project;
@@ -62,7 +52,8 @@ public class CodeLimitTransform extends Transform {
     }
 
     @Override
-    public void transform(TransformInvocation transformInvocation) throws TransformException, InterruptedException, IOException {
+    public void transform(TransformInvocation transformInvocation)
+            throws TransformException, InterruptedException, IOException {
         super.transform(transformInvocation);
         Context context = transformInvocation.getContext();
         //依赖
@@ -93,23 +84,9 @@ public class CodeLimitTransform extends Transform {
                         System.out.println(TAG + "," + file.getName());
                         if (file.getName().contains("Main")) {
                             String classPath = filePath.split("\\\\debug\\\\")[1];
-                            String className = classPath.substring(0, classPath.length() - 6).replace('\\', '.').replace('/', '.');
-                            mProject.getLogger().info("className:"+className);
-                            // CtClass c = null;
-                            // try {
-                            //     c = pool.getCtClass(className);
-                            // } catch (NotFoundException e) {
-                            //     e.printStackTrace();
-                            // }
-                            // if (c.isFrozen()) {
-                            //     c.defrost();
-                            // }
-                            // CtMethod[] methods = c.getDeclaredMethods();
-                            // for (CtMethod method : methods) {
-                            //     if (method.isEmpty() || Modifier.isNative(method.getModifiers())) {
-                            //         return;
-                            //     }
-                            // }
+                            String className =
+                                    classPath.substring(0, classPath.length() - 6).replace('\\', '.').replace('/', '.');
+                            mProject.getLogger().info("className:" + className);
                         }
                     }
                 });
