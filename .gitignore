@@ -64,3 +64,9 @@ captures/
 
 /reference
 app/fabric.properties
+
+
+buildSrc/build/
+buildSrc/.gradle
+
+.idea/*
