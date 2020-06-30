@@ -67,6 +67,6 @@ app/fabric.properties
 
 
 buildSrc/build/
-buildSrc/.gradle
+buildSrc/.gradle/*
 
 .idea/*

@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: "com.salton123.plugin"
+
 android {
     compileSdkVersion 28
     defaultConfig {
